@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Методичний хаб 7–9 класи (ЛК 9, ЛЗ 11, ЛЗ 12, СР 19)</title>
+    <title>Методичний практикум з викладання інформатики в 7–9 класах НУШ</title>
     <style>
         :root {
             --primary-color: #1e3a8a;
@@ -23,7 +23,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .container {
@@ -39,7 +39,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 25px 30px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,14 +49,14 @@
 
         header h1 {
             margin: 0;
-            font-size: 1.6rem;
+            font-size: 1.45rem;
             font-weight: 700;
         }
 
         header p {
-            margin: 5px 0 0 0;
+            margin: 4px 0 0 0;
             opacity: 0.9;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
         }
 
         .score-pill {
@@ -64,39 +64,40 @@
             padding: 8px 18px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             border: 1px solid rgba(255,255,255,0.4);
+            white-space: nowrap;
         }
 
         nav.step-tabs {
-            display: flex;
-            background: #e2e8f0;
-            border-bottom: 1px solid var(--border-color);
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2px;
+            background: var(--border-color);
+            border-bottom: 2px solid var(--border-color);
         }
 
         .tab-btn {
-            flex: 1;
-            padding: 14px 20px;
+            padding: 12px 10px;
             border: none;
-            background: transparent;
+            background: #e2e8f0;
             font-weight: 600;
             color: #475569;
             cursor: pointer;
-            white-space: nowrap;
             transition: all 0.2s;
-            border-bottom: 3px solid transparent;
+            font-size: 0.88rem;
+            text-align: center;
         }
 
         .tab-btn.active {
             background: white;
             color: var(--primary-color);
-            border-bottom-color: var(--secondary-color);
+            box-shadow: inset 0 -3px 0 var(--secondary-color);
         }
 
         .step-content {
             display: none;
-            padding: 30px;
+            padding: 25px;
         }
 
         .step-content.active {
@@ -108,47 +109,47 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .card-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 2px solid var(--bg-color);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             margin-bottom: 12px;
         }
 
         .form-group label {
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             color: #334155;
         }
 
-        input[type="text"], select, textarea {
+        input[type="text"], input[type="date"], select, textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 8px 10px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             box-sizing: border-box;
             background-color: #f8fafc;
         }
@@ -164,12 +165,12 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
         }
 
         table.custom-table th, table.custom-table td {
             border: 1px solid var(--border-color);
-            padding: 8px 10px;
+            padding: 8px;
             text-align: left;
             vertical-align: top;
         }
@@ -181,19 +182,35 @@
         }
 
         table.custom-table textarea {
-            min-height: 60px;
+            min-height: 50px;
             font-size: 0.82rem;
-            padding: 6px;
+            padding: 5px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 14px;
+        }
+
+        .quiz-question p {
+            margin-top: 0;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.92rem;
         }
 
         .quiz-option {
             display: block;
-            margin: 8px 0;
-            padding: 10px;
+            margin: 5px 0;
+            padding: 6px 10px;
             border: 1px solid var(--border-color);
             border-radius: 6px;
+            background: white;
             cursor: pointer;
-            transition: background 0.2s;
+            font-size: 0.86rem;
         }
 
         .quiz-option:hover {
@@ -201,7 +218,7 @@
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 6px;
             border: none;
             font-weight: 600;
@@ -209,7 +226,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: background 0.2s;
         }
 
@@ -219,6 +236,16 @@
         .btn-success:hover { background: #15803d; }
         .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-color); }
         .btn-outline:hover { background: #f1f5f9; }
+
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-size: 0.86rem;
+            color: #1e40af;
+        }
 
         .status-badge {
             display: inline-block;
@@ -230,11 +257,22 @@
         .badge-pending { background: #fef3c7; color: #b45309; }
         .badge-done { background: #dcfce7; color: #15803d; }
 
+        .class-header {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
         @media print {
-            nav, .btn, header .score-pill { display: none !important; }
+            nav, .btn, .score-pill { display: none !important; }
             body { padding: 0; background: white; }
             .container { border: none; box-shadow: none; }
-            .step-content { display: block !important; padding: 15px 0; page-break-after: always; }
+            .step-content { display: block !important; padding: 10px 0; page-break-after: always; }
         }
     </style>
 </head>
@@ -243,133 +281,206 @@
 <div class="container">
     <header>
         <div>
-            <h1>Методичний хаб 7–9 класи НУШ</h1>
-            <p>Комплексний верифікатор: ЛК 9, ЛЗ 11, ЛЗ 12 та СР 19</p>
+            <h1>Методичний практикум з викладання інформатики в 7–9 класах НУШ</h1>
+            <p>Комплексний аналіз та розробка освітніх матеріалів (ЛК 9, ЛЗ 11, ЛЗ 12, СР 19)</p>
         </div>
         <div class="score-pill" id="totalScorePill">Бали: 0.0 / 8.0</div>
     </header>
 
     <nav class="step-tabs">
-        <button class="tab-btn active" onclick="switchStep(0)">Крок 1. ЛК 9 (Аналіз та Тест)</button>
-        <button class="tab-btn" onclick="switchStep(1)">Крок 2. ЛЗ 11 (Модельні програми & КТП)</button>
-        <button class="tab-btn" onclick="switchStep(2)">Крок 3. ЛЗ 12 & СР 19 (Завдання & Рубрика ГР)</button>
-        <button class="tab-btn" onclick="switchStep(3)">Крок 4. Підсумковий артефакт (Експорт)</button>
+        <button class="tab-btn active" onclick="switchStep(0)">Крок 1. Тест (ЛК 9)</button>
+        <button class="tab-btn" onclick="switchStep(1)">Крок 2. Паспорт НМЗ (ЛЗ 11)</button>
+        <button class="tab-btn" onclick="switchStep(2)">Крок 3. Концептуальні засади & Я-орієнтири</button>
+        <button class="tab-btn" onclick="switchStep(3)">Крок 4. Завдання & Рубрики (ЛЗ 12)</button>
+        <button class="tab-btn" onclick="switchStep(4)">Крок 5. Звіт</button>
     </nav>
 
-    <!-- КРОК 1: ЛК 9 -->
+    <!-- КРОК 1: ТЕСТ -->
     <div class="step-content active" id="step0">
         <div class="card">
             <div class="card-title">
-                <span>📘 1.1. Аналітичний експрес-тест за ЛК 9 (Концептуальні засади НУШ)</span>
-                <span class="status-badge badge-pending" id="badgeLK9">Не складено</span>
+                <span>📝 Контрольне тестування з методики викладання інформатики в 7–9 класах (1,0 бал)</span>
+                <span class="status-badge badge-pending" id="badgeTest">Не перевірено</span>
             </div>
-            <p style="font-size:0.9rem;">Дайте відповіді на 3 контрольні запитання для перевірки розуміння специфіки 7–9 класів:</p>
+            <p style="font-size:0.88rem;">Дайте відповіді на 10 різнопланових запитань. Кожна правильна відповідь дає 0,1 бала (максимум — 1,0 бал):</p>
             
             <div id="quizContainer">
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label>1. Яка головна зміна відбувається при переході від 5–6 до 7–9 класів в інформатичній галузі?</label>
-                    <label class="quiz-option"><input type="radio" name="q1" value="0"> Відмова від вивчення алгоритмізації на користь офісного ПЗ</label>
-                    <label class="quiz-option"><input type="radio" name="q1" value="1"> Перехід від пасивного споживання технологій до обчислювального мислення та цифрового громадянства</label>
-                    <label class="quiz-option"><input type="radio" name="q1" value="0"> Повний перехід на безмашинне викладання інформатики</label>
+                <div class="quiz-question">
+                    <p>1. Яка головна візійна зміна відбувається при переході від 5–6 до 7–9 класів в інформатичній галузі?</p>
+                    <label class="quiz-option"><input type="radio" name="q1" value="0" onchange="updateAllScores()"> Відмова від алгоритмізації на користь суто офісних програм</label>
+                    <label class="quiz-option"><input type="radio" name="q1" value="1" onchange="updateAllScores()"> Перехід від споживання технологій до обчислювального мислення, цифрового громадянства та створення власних продуктів</label>
+                    <label class="quiz-option"><input type="radio" name="q1" value="0" onchange="updateAllScores()"> Перехід на безмашинний курс інформатики</label>
                 </div>
 
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label>2. Що з наведеного є орієнтиром «Математичної компетентності» для 7–9 класів у ДСПО?</label>
-                    <label class="quiz-option"><input type="radio" name="q2" value="1"> Пояснення цінності декомпозиції та модульної технології для розв'язання складних проблем</label>
-                    <label class="quiz-option"><input type="radio" name="q2" value="0"> Уміння вмикати комп'ютер та підключати мишку</label>
-                    <label class="quiz-option"><input type="radio" name="q2" value="0"> Заучування визначень понять «байти» та «біти»</label>
+                <div class="quiz-question">
+                    <p>2. (Множинний вибір) Які з наведених напрямів належать до 4-х обов'язкових Груп Результатів (ГР) за Наказом МОН № 1093? (Оберіть 2 правильні):</p>
+                    <label class="quiz-option"><input type="checkbox" name="q2" value="1" onchange="updateAllScores()"> ГР 1: Пошук, аналіз та моделювання даних</label>
+                    <label class="quiz-option"><input type="checkbox" name="q2" value="0" onchange="updateAllScores()"> Навички швидкого набору тексту на швидкість</label>
+                    <label class="quiz-option"><input type="checkbox" name="q2" value="1" onchange="updateAllScores()"> ГР 4: Кібербезпека, етика та авторські права</label>
+                    <label class="quiz-option"><input type="checkbox" name="q2" value="0" onchange="updateAllScores()"> Уміння самостійно ремонтувати комп'ютерні монітори</label>
                 </div>
 
-                <div class="form-group" style="margin-bottom:15px;">
-                    <label>3. Скільки обов'язкових Груп Результатів (ГР) оцінювання визначено Наказом МОН № 1093?</label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="0"> 2 групи результатів</label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="1"> 4 групи результатів (ГР 1 – ГР 4)</label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="0"> 10 груп результатів</label>
+                <div class="quiz-question">
+                    <p>3. (Послідовність) Встановіть правильний порядок етапів розв'язання проблеми за допомогою обчислювального мислення:</p>
+                    <div style="display:flex; flex-direction:column; gap:6px; margin-top:5px;">
+                        <div>
+                            <select id="seq3_1" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Аналіз проблеми та її декомпозиція на підзадачі</span>
+                        </div>
+                        <div>
+                            <select id="seq3_2" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Пошук закономірностей та побудова алгоритму</span>
+                        </div>
+                        <div>
+                            <select id="seq3_3" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Програмна реалізація у середовищі (Scratch/Python)</span>
+                        </div>
+                        <div>
+                            <select id="seq3_4" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Тестування, налагодження та аналіз відгуків</span>
+                        </div>
+                    </div>
                 </div>
 
-                <button class="btn btn-primary" onclick="checkQuizLK9()">Зафіксувати результати тестування (0,5 б)</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">✍️ 1.2. Аналітична картка компетентностей НУШ (0,5 б)</div>
-            <div class="form-group">
-                <label>3 основні тези щодо специфіки викладання інформатики в 7–9 класах:</label>
-                <textarea id="lk9Theses" rows="3" placeholder="1. Опанування обчислювального мислення... 2. Створення власних програмних продуктів... 3. Кібербезпека та етика ШІ..."></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label>Приклад реалізації обраної компетентності (Матриця НУШ):</label>
-                <div class="form-grid">
-                    <select id="lk9Comp">
-                        <option value="Математична компетентність">Математична компетентність</option>
-                        <option value="Інформаційно-комунікаційна">Інформаційно-комунікаційна (цифрова)</option>
-                        <option value="Навчання впродовж життя">Навчання впродовж життя</option>
-                        <option value="Громадянська та соціальна">Громадянська та соціальна</option>
-                    </select>
-                    <input type="text" id="lk9Orient" placeholder="«Я-орієнтир» ученства">
-                    <input type="text" id="lk9Tool" placeholder="Цифровий засіб / середовище">
+                <div class="quiz-question">
+                    <p>4. Що означає код державного результату навчання «9 ІФО 2.3.1» у НУШ?</p>
+                    <label class="quiz-option"><input type="radio" name="q4" value="1" onchange="updateAllScores()"> 9 клас / базове предметне навчання, ІФО — Інформатична галузь, 2 група результатів, 3 лінійка, 1 результат</label>
+                    <label class="quiz-option"><input type="radio" name="q4" value="0" onchange="updateAllScores()"> 9 розділ, Інформатика, 23 практична робота</label>
                 </div>
+
+                <div class="quiz-question">
+                    <p>5. (Множинний вибір) Які з наведених компонентів розвивають виконавчі функції мозку під час програмування за Концепцією НУШ? (Оберіть 2 правильні):</p>
+                    <label class="quiz-option"><input type="checkbox" name="q5" value="1" onchange="updateAllScores()"> Когнітивна гнучкість при зміні підходів через помилки</label>
+                    <label class="quiz-option"><input type="checkbox" name="q5" value="1" onchange="updateAllScores()"> Робоча пам'ять при утриманні логіки та змінних програми</label>
+                    <label class="quiz-option"><input type="checkbox" name="q5" value="0" onchange="updateAllScores()"> Механічне переписування коду з дошки без аналізу</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>6. (Послідовність) Упорядкуйте кроки конструювання компетентнісного завдання з інформатики:</p>
+                    <div style="display:flex; flex-direction:column; gap:6px; margin-top:5px;">
+                        <div>
+                            <select id="seq6_1" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Опис реалістичного життєвого контексту проблеми</span>
+                        </div>
+                        <div>
+                            <select id="seq6_2" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Підготовка вхідного датасету чи заготовки файлу</span>
+                        </div>
+                        <div>
+                            <select id="seq6_3" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Формулювання чіткого завдання та очікуваного цифрового продукту</span>
+                        </div>
+                        <div>
+                            <select id="seq6_4" style="width:120px; display:inline-block;" onchange="updateAllScores()">
+                                <option value="">-- Крок --</option>
+                                <option value="1">Крок 1</option><option value="2">Крок 2</option><option value="3">Крок 3</option><option value="4">Крок 4</option>
+                            </select> 
+                            <span>Розробка критеріальної рубрики оцінювання за 4 ГР</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-question">
+                    <p>7. До якої групи результатів належить оцінювання автентичності медіа та аналіз суперечливої інформації?</p>
+                    <label class="quiz-option"><input type="radio" name="q7" value="1" onchange="updateAllScores()"> ГР 1 (ІФО 1) — Робота з інформацією, даними та моделями</label>
+                    <label class="quiz-option"><input type="radio" name="q7" value="0" onchange="updateAllScores()"> ГР 3 (ІФО 3) — Робота у цифровому середовищі</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>8. Що з наведеного є орієнтиром Математичної компетентності для 7–9 класів у Концептуальних засадах?</p>
+                    <label class="quiz-option"><input type="radio" name="q8" value="1" onchange="updateAllScores()"> «Я вмію пояснити цінність декомпозиції та модульної технології для розв'язання складних проблем»</label>
+                    <label class="quiz-option"><input type="radio" name="q8" value="0" onchange="updateAllScores()"> «Я вмію шукати файли в системному провіднику»</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>9. (Множинний вибір) Які цифрові сервіси доцільно використовувати для проведення онлайн практикумів та змагань з програмування за Концепцією? (Оберіть 2 правильні):</p>
+                    <label class="quiz-option"><input type="checkbox" name="q9" value="1" onchange="updateAllScores()"> ЄPython, Qbit, E-Olymp, Algotester</label>
+                    <label class="quiz-option"><input type="checkbox" name="q9" value="1" onchange="updateAllScores()"> Освітня платформа «ІТ-Студії» (Дія.Освіта)</label>
+                    <label class="quiz-option"><input type="checkbox" name="q9" value="0" onchange="updateAllScores()"> Стандартний текстовий блокнот Windows без перевірки</label>
+                </div>
+
+                <div class="quiz-question">
+                    <p>10. Що передбачає цифрове громадянство у курсі інформатики 7–9 класів?</p>
+                    <label class="quiz-option"><input type="radio" name="q10" value="1" onchange="updateAllScores()"> Вміння захищати дані, дотримуватися авторського права, розпізнавати дезінформацію та етично взаємодіяти в мережі</label>
+                    <label class="quiz-option"><input type="radio" name="q10" value="0" onchange="updateAllScores()"> Наявність зареєстрованого облікового запису в соцмережах</label>
+                </div>
+
+                <button class="btn btn-primary" onclick="updateAllScores(true)">Зафіксувати результати тестування</button>
             </div>
         </div>
     </div>
 
-    <!-- КРОК 2: ЛЗ 11 -->
+    <!-- КРОК 2: ПАСПОРТ НАВЧАЛЬНО-МЕТОДИЧНОГО ЗАБЕЗПЕЧЕННЯ -->
     <div class="step-content" id="step1">
         <div class="card">
-            <div class="card-title">
-                <span>📚 2.1. Паспорт навчально-методичного забезпечення (ЛЗ 11 — 3,0 б)</span>
-                <span class="status-badge badge-pending" id="badgeLZ11">Не заповнено</span>
-            </div>
+            <div class="card-title">📚 Паспорт навчально-методичного забезпечення (ЛЗ 11 — 3,0 бали)</div>
+            
             <div class="form-group">
-                <label for="selectAuthorLine">Обрана авторська лінійка програм (7–9 класи):</label>
-                <select id="selectAuthorLine" onchange="autoFillProgramURL()">
+                <label for="selectAuthorLine"><b>Обраний авторський колектив (єдина лінійка програм для 7–9 класів):</b></label>
+                <select id="selectAuthorLine" onchange="updateAllScores()">
                     <option value="">-- Оберіть авторський колектив --</option>
-                    <option value="rivkind">під ред. Ривкінда Й.Я. та ін.</option>
-                    <option value="morze">під ред. Морзе Н.В. та ін.</option>
-                    <option value="zavadsky">під ред. Завадського І.О. та ін.</option>
-                    <option value="pasichnyk">під ред. Пасічник О.В. та ін.</option>
-                    <option value="gromko">під ред. Громко Т.В. та ін.</option>
-                    <option value="bondarenko">під ред. Бондаренко О.О. та ін.</option>
+                    <option value="під ред. Ривкінда Й.Я. та ін.">під ред. Ривкінда Й.Я. та ін.</option>
+                    <option value="під ред. Морзе Н.В. та ін.">під ред. Морзе Н.В. та ін.</option>
+                    <option value="під ред. Завадського І.О. та ін.">під ред. Завадського І.О. та ін.</option>
+                    <option value="під ред. Пасічник О.В. та ін.">під ред. Пасічник О.В. та ін.</option>
+                    <option value="під ред. Громко Т.В. та ін.">під ред. Громко Т.В. та ін.</option>
+                    <option value="під ред. Бондаренко О.О. та ін.">під ред. Бондаренко О.О. та ін.</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="urlProgram">Пряме URL-посилання на Модельну програму на сайті МОН:</label>
-                <input type="text" id="urlProgram" placeholder="https://mon.gov.ua/...">
             </div>
 
             <div style="overflow-x:auto;">
                 <table class="custom-table">
                     <thead>
                         <tr>
-                            <th>Клас</th>
-                            <th>URL-посилання на КТП</th>
-                            <th>Автор КТП (ПІБ вчителя/розробника)</th>
-                            <th>Назва та автори підручника</th>
-                            <th>URL-посилання на підручник (ІМЗО)</th>
+                            <th style="width:10%;">Клас</th>
+                            <th style="width:25%;">Посилання на КТП (URL)</th>
+                            <th style="width:20%;">Автор КТП (ПІБ вчителя / розробника)</th>
+                            <th style="width:20%;">Назва та автори підручника</th>
+                            <th style="width:25%;">Посилання на підручник (URL / ІМЗО)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><b>7 клас</b></td>
-                            <td><input type="text" id="ktpUrl7" placeholder="https://..."></td>
-                            <td><input type="text" id="ktpAuthor7" placeholder="ПІБ вчителя або розробника"></td>
-                            <td><input type="text" id="bookName7" placeholder="Інформатика 7 кл."></td>
-                            <td><input type="text" id="bookUrl7" placeholder="https://imzo.gov.ua/..."></td>
+                            <td><input type="text" id="ktpUrl7" placeholder="https://..." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="ktpAuthor7" placeholder="ПІБ вчителя або розробника" oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookName7" placeholder="Інформатика 7 кл." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookUrl7" placeholder="https://imzo.gov.ua/..." oninput="updateAllScores()"></td>
                         </tr>
                         <tr>
                             <td><b>8 клас</b></td>
-                            <td><input type="text" id="ktpUrl8" placeholder="https://..."></td>
-                            <td><input type="text" id="ktpAuthor8" placeholder="ПІБ вчителя або розробника"></td>
-                            <td><input type="text" id="bookName8" placeholder="Інформатика 8 кл."></td>
-                            <td><input type="text" id="bookUrl8" placeholder="https://imzo.gov.ua/..."></td>
+                            <td><input type="text" id="ktpUrl8" placeholder="https://..." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="ktpAuthor8" placeholder="ПІБ вчителя або розробника" oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookName8" placeholder="Інформатика 8 кл." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookUrl8" placeholder="https://imzo.gov.ua/..." oninput="updateAllScores()"></td>
                         </tr>
                         <tr>
                             <td><b>9 клас</b></td>
-                            <td><input type="text" id="ktpUrl9" placeholder="https://..."></td>
-                            <td><input type="text" id="ktpAuthor9" placeholder="ПІБ вчителя або розробника"></td>
-                            <td><input type="text" id="bookName9" placeholder="Інформатика 9 кл."></td>
-                            <td><input type="text" id="bookUrl9" placeholder="https://imzo.gov.ua/..."></td>
+                            <td><input type="text" id="ktpUrl9" placeholder="https://..." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="ktpAuthor9" placeholder="ПІБ вчителя або розробника" oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookName9" placeholder="Інформатика 9 кл." oninput="updateAllScores()"></td>
+                            <td><input type="text" id="bookUrl9" placeholder="https://imzo.gov.ua/..." oninput="updateAllScores()"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -377,267 +488,458 @@
         </div>
     </div>
 
-    <!-- КРОК 3: ЛЗ 12 + СР 19 -->
+    <!-- КРОК 3: КОНЦЕПТУАЛЬНІ ЗАСАДИ ТА Я-ОРІЄНТИРИ -->
     <div class="step-content" id="step2">
-        
-        <!-- 3.1. Банк завдань -->
         <div class="card">
-            <div class="card-title">
-                <span>💡 3.1. Банк комп'ютерно-орієнтованих завдань (ЛЗ 12 — 2,0 б)</span>
-                <span class="status-badge badge-pending" id="badgeLZ12">В процесі</span>
+            <div class="card-title">📖 Опрацювання нормативно-концептуальних засад НУШ (0,5 бала)</div>
+            
+            <div class="info-box">
+                🔗 <b>Офіційний ресурс МОН України:</b><br>
+                <a href="https://mon.gov.ua/static-objects/mon/sites/1/novyny-posylannia/konceptualni-zasadi-informaticnoyi-osvitnoyi-galuzi.pdf" target="_blank" style="font-weight:bold; color:var(--primary-color);">Концептуальні засади інформатичної освітньої галузі (МОН України / The World Bank)</a>
             </div>
-            
-            <p style="font-size:0.88rem;">Сконструюйте по 1 творчому компетентнісному завданню для кожного класу:</p>
-            
+
+            <p style="font-weight:600;">3 основні тези щодо відмінностей викладання інформатики в 7–9 класах порівняно з 5–6 класами:</p>
+            <div class="form-group">
+                <label>Теза 1 (Обчислювальне мислення та алгоритмізація):</label>
+                <textarea id="thesis1" rows="2" placeholder="Вписуйте відмінності з Концепції..." oninput="updateAllScores()"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Теза 2 (Цифрове громадянство та ШІ):</label>
+                <textarea id="thesis2" rows="2" placeholder="Вписуйте відмінності з Концепції..." oninput="updateAllScores()"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Теза 3 (Створення цифрових продуктів):</label>
+                <textarea id="thesis3" rows="2" placeholder="Вписуйте відмінності з Концепції..." oninput="updateAllScores()"></textarea>
+            </div>
+        </div>
+
+        <!-- РОЗГОРНУТА МАТРИЦЯ Я-ОРІЄНТИРІВ ДЛЯ 7, 8 ТА 9 КЛАСІВ -->
+        <div class="card">
+            <div class="card-title">🧩 Матриця «Я-орієнтирів» для 7, 8 та 9 класів (Таблиця 5 Концептуальних засад МОН)</div>
+            <p style="font-size:0.86rem; color:#475569;">Скопіюйте та впишіть відповідні «Я-орієнтири» з Таблиці 5 Концептуальних засад для кожного класу та змістової лінії:</p>
+
             <!-- 7 КЛАС -->
-            <div style="background:#fafafa; border:1px solid #e2e8f0; border-radius:6px; padding:12px; margin-bottom:12px;">
-                <b style="color:var(--primary-color);">7 КЛАС (Алгоритми / Графіка):</b>
-                <div class="form-grid" style="margin-top:8px;">
-                    <input type="text" id="taskTopic7" placeholder="Тема за КТП">
-                    <input type="text" id="taskContext7" placeholder="Контекст життєвої ситуації">
-                    <input type="text" id="taskProduct7" placeholder="Цифровий продукт (.py, .xlsx)">
+            <div class="class-header">7 КЛАС</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px;">
+                <div class="form-group">
+                    <label><b>ІФО 1 (Робота з інформацією, даними та моделями):</b></label>
+                    <input type="text" id="orient7_1" placeholder="«Я-орієнтир» 7 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool7_1" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 2 (Обчислювальне мислення та програмування):</b></label>
+                    <input type="text" id="orient7_2" placeholder="«Я-орієнтир» 7 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool7_2" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 3 (Робота в цифровому середовищі):</b></label>
+                    <input type="text" id="orient7_3" placeholder="«Я-орієнтир» 7 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool7_3" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 4 (Безпека, відповідальність та етика):</b></label>
+                    <input type="text" id="orient7_4" placeholder="«Я-орієнтир» 7 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool7_4" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
                 </div>
             </div>
 
             <!-- 8 КЛАС -->
-            <div style="background:#fafafa; border:1px solid #e2e8f0; border-radius:6px; padding:12px; margin-bottom:12px;">
-                <b style="color:var(--primary-color);">8 КЛАС (Таблиці / GUI програмування):</b>
-                <div class="form-grid" style="margin-top:8px;">
-                    <input type="text" id="taskTopic8" placeholder="Тема за КТП">
-                    <input type="text" id="taskContext8" placeholder="Контекст життєвої ситуації">
-                    <input type="text" id="taskProduct8" placeholder="Цифровий продукт (.py, .html)">
+            <div class="class-header">8 КЛАС</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:15px;">
+                <div class="form-group">
+                    <label><b>ІФО 1 (Робота з інформацією, даними та моделями):</b></label>
+                    <input type="text" id="orient8_1" placeholder="«Я-орієнтир» 8 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool8_1" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 2 (Обчислювальне мислення та програмування):</b></label>
+                    <input type="text" id="orient8_2" placeholder="«Я-орієнтир» 8 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool8_2" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 3 (Робота в цифровому середовищі):</b></label>
+                    <input type="text" id="orient8_3" placeholder="«Я-орієнтир» 8 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool8_3" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 4 (Безпека, відповідальність та етика):</b></label>
+                    <input type="text" id="orient8_4" placeholder="«Я-орієнтир» 8 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool8_4" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
                 </div>
             </div>
 
             <!-- 9 КЛАС -->
-            <div style="background:#fafafa; border:1px solid #e2e8f0; border-radius:6px; padding:12px; margin-bottom:12px;">
-                <b style="color:var(--primary-color);">9 КЛАС (Бази даних / Аналіз даних / ШІ):</b>
+            <div class="class-header">9 КЛАС</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                <div class="form-group">
+                    <label><b>ІФО 1 (Робота з інформацією, даними та моделями):</b></label>
+                    <input type="text" id="orient9_1" placeholder="«Я-орієнтир» 9 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool9_1" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 2 (Обчислювальне мислення та програмування):</b></label>
+                    <input type="text" id="orient9_2" placeholder="«Я-орієнтир» 9 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool9_2" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 3 (Робота в цифровому середовищі):</b></label>
+                    <input type="text" id="orient9_3" placeholder="«Я-орієнтир» 9 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool9_3" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label><b>ІФО 4 (Безпека, відповідальність та етика):</b></label>
+                    <input type="text" id="orient9_4" placeholder="«Я-орієнтир» 9 класу" oninput="updateAllScores()">
+                    <input type="text" id="tool9_4" placeholder="Цифровий засіб / середовище" oninput="updateAllScores()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КРОК 4: КОМПЕТЕНТНІСНІ ЗАСАДИ ТА РОЗРОБЛЕННЯ ЗАВДАНЬ -->
+    <div class="step-content" id="step3">
+        <div class="card">
+            <div class="card-title">💡 Бланк комп'ютерно-орієнтованих та компетентнісних завдань (ЛЗ 12 — 1,5 бала)</div>
+            <p style="font-size:0.88rem; color:#475569;">Сконструюйте компетентнісні завдання для 7, 8 та 9 класів за темами з вашого КТП (по 0,5 б за кожний клас):</p>
+            
+            <div style="background:#fafafa; border:1px solid #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px;">
+                <b style="color:var(--primary-color);">7 КЛАС:</b>
                 <div class="form-grid" style="margin-top:8px;">
-                    <input type="text" id="taskTopic9" placeholder="Тема за КТП">
-                    <input type="text" id="taskContext9" placeholder="Контекст життєвої ситуації">
-                    <input type="text" id="taskProduct9" placeholder="Цифровий продукт (.accdb, .pdf)">
+                    <input type="text" id="taskTopic7" placeholder="Тема уроку за КТП" oninput="updateAllScores()">
+                    <input type="text" id="taskContext7" placeholder="Життєва ситуація / Контекст" oninput="updateAllScores()">
+                    <input type="text" id="taskInst7" placeholder="Завдання для учня (покрокова інструкція)" oninput="updateAllScores()">
+                    <input type="text" id="taskProduct7" placeholder="Очікуваний цифровий продукт (.py, .sb3)" oninput="updateAllScores()">
+                </div>
+            </div>
+
+            <div style="background:#fafafa; border:1px solid #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px;">
+                <b style="color:var(--primary-color);">8 КЛАС:</b>
+                <div class="form-grid" style="margin-top:8px;">
+                    <input type="text" id="taskTopic8" placeholder="Тема уроку за КТП" oninput="updateAllScores()">
+                    <input type="text" id="taskContext8" placeholder="Життєва ситуація / Контекст" oninput="updateAllScores()">
+                    <input type="text" id="taskInst8" placeholder="Завдання для учня (покрокова інструкція)" oninput="updateAllScores()">
+                    <input type="text" id="taskProduct8" placeholder="Очікуваний цифровий продукт (.xlsx, .html)" oninput="updateAllScores()">
+                </div>
+            </div>
+
+            <div style="background:#fafafa; border:1px solid #cbd5e1; border-radius:6px; padding:12px; margin-bottom:12px;">
+                <b style="color:var(--primary-color);">9 КЛАС:</b>
+                <div class="form-grid" style="margin-top:8px;">
+                    <input type="text" id="taskTopic9" placeholder="Тема уроку за КТП" oninput="updateAllScores()">
+                    <input type="text" id="taskContext9" placeholder="Життєва ситуація / Контекст" oninput="updateAllScores()">
+                    <input type="text" id="taskInst9" placeholder="Завдання для учня (покрокова інструкція)" oninput="updateAllScores()">
+                    <input type="text" id="taskProduct9" placeholder="Очікуваний цифровий продукт (.accdb, .pdf)" oninput="updateAllScores()">
                 </div>
             </div>
         </div>
 
-        <!-- 3.2. РУБРИКА ОЦІНЮВАННЯ ЗА 4 ГР (ДОДАНО ТАБЛИЦЮ!) -->
         <div class="card">
-            <div class="card-title">
-                <span>📊 3.2. Критеріальна рубрика (Rubric) оцінювання за 4-ма ГР (ЛЗ 12 — 1,0 б)</span>
-            </div>
-            <p style="font-size:0.85rem; color:#475569;">Перевірте або внесіть власні критерії оцінювання розроблених завдань за Наказом МОН № 1093:</p>
+            <div class="card-title">📊 Критеріальна рубрика оцінювання за 4 ГР (ЛЗ 12 — 1,0 бал)</div>
             
+            <p style="font-size:0.86rem; color:#475569;">Вкажіть клас та тему конкретного уроку, для якого розробляється дана критеріальна матриця:</p>
+            <div class="form-grid" style="margin-bottom:12px;">
+                <div class="form-group">
+                    <label>Клас (7, 8 або 9 клас):</label>
+                    <input type="text" id="rubricClass" placeholder="наприклад: 8 клас" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label>Тема уроку:</label>
+                    <input type="text" id="rubricTopic" placeholder="наприклад: Розгалуження в Python / Таблиці Excel" oninput="updateAllScores()">
+                </div>
+            </div>
+
+            <p style="font-size:0.85rem; font-weight:600;">Розробіть критерії оцінювання за 4-ма рівнями навчальних досягнень:</p>
+
             <div style="overflow-x:auto;">
-                <table class="custom-table" id="rubricTable">
+                <table class="custom-table">
                     <thead>
                         <tr>
                             <th style="width:20%;">Група результатів (ГР)</th>
-                            <th style="width:20%;">Початковий (1–3 б)</th>
-                            <th style="width:20%;">Середній (4–6 б)</th>
-                            <th style="width:20%;">Достатній (7–9 б)</th>
-                            <th style="width:20%;">Високий (10–12 б)</th>
+                            <th style="width:20%;">Початковий рівень</th>
+                            <th style="width:20%;">Середній рівень</th>
+                            <th style="width:20%;">Достатній рівень</th>
+                            <th style="width:20%;">Високий рівень</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><b>ГР 1. Пошук, аналіз та моделювання даних</b></td>
-                            <td><textarea id="gr1_1">Визначає дані лише за допомогою вчителя; відтворює готову модель із помилками.</textarea></td>
-                            <td><textarea id="gr1_2">Самостійно знаходить дані, але допускає помилки в аналізі чи побудові діаграми.</textarea></td>
-                            <td><textarea id="gr1_3">Впевнено аналізує дані, будує правильні інформаційні та табличні моделі.</textarea></td>
-                            <td><textarea id="gr1_4">Досліджує складні набори даних, виявляє закономірності та будує оптимальні моделі.</textarea></td>
+                            <td><textarea id="rubric_gr1_1" oninput="updateAllScores()">Визначає вхідні дані за допомогою вчителя; відтворює модель із помилками.</textarea></td>
+                            <td><textarea id="rubric_gr1_2" oninput="updateAllScores()">Знаходить дані самостійно, але допускає помилки в їх аналізі чи візуалізації.</textarea></td>
+                            <td><textarea id="rubric_gr1_3" oninput="updateAllScores()">Впевнено аналізує дані, будує правильні інформаційні та табличні моделі.</textarea></td>
+                            <td><textarea id="rubric_gr1_4" oninput="updateAllScores()">Досліджує складні набори даних, виявляє закономірності та будує оптимальні моделі.</textarea></td>
                         </tr>
                         <tr>
                             <td><b>ГР 2. Створення цифрових продуктів та програмування</b></td>
-                            <td><textarea id="gr2_1">Створює фрагмент коду/продукту із суттєвими синтаксичними помилками.</textarea></td>
-                            <td><textarea id="gr2_2">Створює базовий продукт, але код не оптимізований, відсутні вкладені структури.</textarea></td>
-                            <td><textarea id="gr2_3">Розробляє функціональний продукт/програму з урахуванням усіх вимог інструкції.</textarea></td>
-                            <td><textarea id="gr2_4">Створює складний розгалужений/модульний продукт, застосовує декомпозицію.</textarea></td>
+                            <td><textarea id="rubric_gr2_1" oninput="updateAllScores()">Створює фрагмент коду чи продукту із синтаксичними помилками.</textarea></td>
+                            <td><textarea id="rubric_gr2_2" oninput="updateAllScores()">Створює базовий продукт, але код не оптимізований, відсутні вкладені структури.</textarea></td>
+                            <td><textarea id="rubric_gr2_3" oninput="updateAllScores()">Розробляє функціональний продукт/програму згідно з вимогами інструкції.</textarea></td>
+                            <td><textarea id="rubric_gr2_4" oninput="updateAllScores()">Створює складний модульний продукт, застосовує декомпозицію та інновації.</textarea></td>
                         </tr>
                         <tr>
-                            <td><b>ГР 3. Робота у цифровому середовищі та ПЗ</b></td>
-                            <td><textarea id="gr3_1">Орієнтується в інтерфейсі ПЗ лише за підказками; стикається зі збоями файлів.</textarea></td>
-                            <td><textarea id="gr3_2">Використовує базові функції програмного середовища, усуває прості помилки.</textarea></td>
-                            <td><textarea id="gr3_3">Впевнено володіє інструментами ПЗ (Excel, Python, DBMS), налаштовує середовище.</textarea></td>
-                            <td><textarea id="gr3_4">Вільно опановує нові інструменти, самостійно діагностує та усуває збої ПЗ.</textarea></td>
+                            <td><b>ГР 3. Робота у цифровому середовищі</b></td>
+                            <td><textarea id="rubric_gr3_1" oninput="updateAllScores()">Орієнтується в інтерфейсі ПЗ лише за підказками вчителя.</textarea></td>
+                            <td><textarea id="rubric_gr3_2" oninput="updateAllScores()">Використовує базові функції середовища, усуває прості помилки введення.</textarea></td>
+                            <td><textarea id="rubric_gr3_3" oninput="updateAllScores()">Впевнено володіє інструментами ПЗ, самостійно налаштовує середовище.</textarea></td>
+                            <td><textarea id="rubric_gr3_4" oninput="updateAllScores()">Вільно опановує нові інструменти, самостійно усуває збої в роботі ПЗ.</textarea></td>
                         </tr>
                         <tr>
                             <td><b>ГР 4. Кібербезпека, етика та авторські права</b></td>
-                            <td><textarea id="gr4_1">Порушує правила оформлення джерел; потребує нагадування щодо кібергігієни.</textarea></td>
-                            <td><textarea id="gr4_2">Дотримується базових правил кібербезпеки, але не завжди вказує авторство джерел.</textarea></td>
-                            <td><textarea id="gr4_3">Захищає власні дані, дотримується етикету спілкування та правил цитування.</textarea></td>
-                            <td><textarea id="gr4_4">Аналізує загрози в мережі, критично оцінює ШІ та суворо дотримується доброчесності.</textarea></td>
+                            <td><textarea id="rubric_gr4_1" oninput="updateAllScores()">Порушує правила оформлення джерел; потребує нагадування з кібергігієни.</textarea></td>
+                            <td><textarea id="rubric_gr4_2" oninput="updateAllScores()">Дотримується базових правил кібербезпеки, але не завжди вказує джерела.</textarea></td>
+                            <td><textarea id="rubric_gr4_3" oninput="updateAllScores()">Захищає власні дані, дотримується етикету та правил вказування авторства.</textarea></td>
+                            <td><textarea id="rubric_gr4_4" oninput="updateAllScores()">Аналізує мережеві загрози, критично оцінює ШІ та дотримується доброчесності.</textarea></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 3.3. Картотека та публікація -->
         <div class="card">
-            <div class="card-title">🌐 3.3. Міжпредметна картотека та Публікація (СР 19 — 1,0 б)</div>
-            <div class="form-group">
-                <label>Міжпредметні та внутрішньопредметні зв'язки розроблених завдань:</label>
-                <textarea id="sr19Connections" rows="2" placeholder="7 кл: Математика + Фізика; 8 кл: Економіка + Практикум; 9 кл: Інформаційні системи..."></textarea>
+            <div class="card-title">🔗 Міжпредметні зв'язки та публікація (СР 19 — 1,0 бал)</div>
+            
+            <p style="font-size:0.86rem; color:#475569;">Вкажіть конкретний клас, тему уроку та опишіть розроблені вправи:</p>
+            <div class="form-grid" style="margin-bottom:12px;">
+                <div class="form-group">
+                    <label>Клас та номер уроку:</label>
+                    <input type="text" id="methodClassLesson" placeholder="наприклад: 7 клас, урок № 14" oninput="updateAllScores()">
+                </div>
+                <div class="form-group">
+                    <label>Тема уроку:</label>
+                    <input type="text" id="methodTopic" placeholder="наприклад: Циклічні алгоритмічні структури" oninput="updateAllScores()">
+                </div>
             </div>
+
             <div class="form-group">
-                <label for="sr19SiteUrl"><b>Пряме активне посилання на розміщений розділ на персональному Сайті вчителя:</b></label>
-                <input type="text" id="sr19SiteUrl" placeholder="https://sites.google.com/view/myteacherwebsite/...">
+                <label><b>1. Опис інтерактивної вправи (LearningApps, Wordwall, Kahoot тощо):</b></label>
+                <textarea id="interExercise" rows="2" placeholder="Опишіть інтерактивну вправу або вкажіть пряме посилання (URL)..." oninput="updateAllScores()"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label><b>2. Опис вправи без комп'ютера (Unplugged Computer Science):</b></label>
+                <textarea id="unpluggedExercise" rows="2" placeholder="Опишіть вправу без комп'ютера (рольова гра, алгоритмічний картковий лабіринт тощо)..." oninput="updateAllScores()"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="sr19SiteUrl"><b>3. Пряме активне посилання на розділ розробок на персональному Сайті вчителя (СР 19 — 1,0 бал):</b></label>
+                <input type="text" id="sr19SiteUrl" placeholder="https://sites.google.com/view/myteacherwebsite/..." oninput="updateAllScores()">
             </div>
         </div>
     </div>
 
-    <!-- КРОК 4: ЕКСПОРТ РЕЗУЛЬТАТІВ -->
-    <div class="step-content" id="step3">
+    <!-- КРОК 5: ЗВІТ -->
+    <div class="step-content" id="step4">
         <div class="card">
-            <div class="card-title">🏆 4. Підсумковий комплексний звіт модуля</div>
-            <p>Усі дані зафіксовані. Ви можете завантажити їх як JSON-файл для збереження прогресу або згенерувати звіт для друку/подання у Moodle.</p>
+            <div class="card-title">📄 Звіт</div>
             
-            <div class="form-group">
-                <label>ПІБ здобувача вищої освіти / Студента:</label>
-                <input type="text" id="studentName" placeholder="Петренко Іван Олександрович">
+            <div class="info-box" style="background:#fff7ed; border-left-color:var(--warning-color); color:#9a3412;">
+                ⚠️ <b>Інструкція для здачі завдання у Moodle:</b><br>
+                Після заповнення всіх полів згенеруйте звіт та під'єднайте згенерований файл/JSON-артефакт до здачі <b>Лабораторної роботи № 12 у курсі Moodle</b>.
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="studentName">ПІБ здобувача вищої освіти (студента):</label>
+                    <input type="text" id="studentName" placeholder="Петренко Іван Олександрович">
+                </div>
+                <div class="form-group">
+                    <label for="submissionDate">Дата виконання:</label>
+                    <input type="date" id="submissionDate">
+                </div>
             </div>
 
             <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:15px;">
                 <button class="btn btn-success" onclick="generateReport()">📄 Згенерувати фінальний звіт</button>
-                <button class="btn btn-primary" onclick="exportDataJSON()">📥 Завантажити JSON артефакт</button>
-                <button class="btn btn-outline" onclick="window.print()">🖨️ Друк / Зберегти у PDF</button>
+                <button class="btn btn-primary" onclick="exportDataJSON()">📥 Завантажити JSON-артефакт</button>
+                <button class="btn btn-outline" onclick="window.print()">🖨️ Друк / Зберегти в PDF</button>
             </div>
         </div>
 
         <div class="card" id="reportOutput" style="display:none; background:#ffffff;">
-            <!-- Динамічно формується підсумковий звіт -->
+            <!-- Сюди виводиться підсумковий звіт -->
         </div>
     </div>
 </div>
 
 <script>
-    let scores = { lk9: 0, lz11: 0, lz12: 0, sr19: 0 };
-
-    const programUrls = {
-        "rivkind": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Ryvkind-та-ін.pdf",
-        "morze": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Morze-та-ін.pdf",
-        "zavadsky": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Zavadskyy-та-ін.pdf",
-        "pasichnyk": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Pasichnyk-та-ін.pdf",
-        "gromko": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Hromko-та-ін.pdf",
-        "bondarenko": "https://mon.gov.ua/storage/app/media/zagalna-serednya/Navchalni.prohramy/2022/08/17/model-navch-prohr-Informatyka-7-9-kl-Bondarenko-та-ін.pdf"
-    };
+    document.getElementById('submissionDate').valueAsDate = new Date();
 
     function switchStep(idx) {
         document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
         document.querySelectorAll('.step-content').forEach((s, i) => s.classList.toggle('active', i === idx));
-        recalculateScores();
     }
 
-    function autoFillProgramURL() {
-        const val = document.getElementById('selectAuthorLine').value;
-        if (programUrls[val]) {
-            document.getElementById('urlProgram').value = programUrls[val];
-        }
-        recalculateScores();
-    }
+    function calculateTestScore() {
+        let correct = 0;
 
-    function checkQuizLK9() {
         const q1 = document.querySelector('input[name="q1"]:checked');
-        const q2 = document.querySelector('input[name="q2"]:checked');
-        const q3 = document.querySelector('input[name="q3"]:checked');
+        if (q1 && q1.value === "1") correct++;
 
-        if (q1 && q2 && q3 && q1.value === "1" && q2.value === "1" && q3.value === "1") {
-            scores.lk9 = 1.0;
-            document.getElementById('badgeLK9').className = "status-badge badge-done";
-            document.getElementById('badgeLK9').innerText = "Зараховано (1.0 б)";
-            alert("Вітаємо! Тестування та аналіз ЛК 9 складено на максимальний бал (1,0 б)!");
-        } else {
-            scores.lk9 = 0.5;
-            document.getElementById('badgeLK9').className = "status-badge badge-pending";
-            document.getElementById('badgeLK9').innerText = "Частково (0.5 б)";
-            alert("Перевірте відповіді на тести. Допущено помилки.");
-        }
-        recalculateScores();
+        const q2 = document.querySelectorAll('input[name="q2"]:checked');
+        if (q2.length === 2 && q2[0].value === "1" && q2[1].value === "1") correct++;
+
+        const s3_1 = document.getElementById('seq3_1').value;
+        const s3_2 = document.getElementById('seq3_2').value;
+        const s3_3 = document.getElementById('seq3_3').value;
+        const s3_4 = document.getElementById('seq3_4').value;
+        if (s3_1 === "1" && s3_2 === "2" && s3_3 === "3" && s3_4 === "4") correct++;
+
+        const q4 = document.querySelector('input[name="q4"]:checked');
+        if (q4 && q4.value === "1") correct++;
+
+        const q5 = document.querySelectorAll('input[name="q5"]:checked');
+        if (q5.length === 2 && q5[0].value === "1" && q5[1].value === "1") correct++;
+
+        const s6_1 = document.getElementById('seq6_1').value;
+        const s6_2 = document.getElementById('seq6_2').value;
+        const s6_3 = document.getElementById('seq6_3').value;
+        const s6_4 = document.getElementById('seq6_4').value;
+        if (s6_1 === "1" && s6_2 === "2" && s6_3 === "3" && s6_4 === "4") correct++;
+
+        const q7 = document.querySelector('input[name="q7"]:checked');
+        if (q7 && q7.value === "1") correct++;
+
+        const q8 = document.querySelector('input[name="q8"]:checked');
+        if (q8 && q8.value === "1") correct++;
+
+        const q9 = document.querySelectorAll('input[name="q9"]:checked');
+        if (q9.length === 2 && q9[0].value === "1" && q9[1].value === "1") correct++;
+
+        const q10 = document.querySelector('input[name="q10"]:checked');
+        if (q10 && q10.value === "1") correct++;
+
+        return { count: correct, score: (correct * 0.1) };
     }
 
-    function recalculateScores() {
-        // ЛЗ 11 перевірка
-        const line = document.getElementById('selectAuthorLine').value;
-        const ktp7 = document.getElementById('ktpUrl7').value.trim();
-        const book7 = document.getElementById('bookUrl7').value.trim();
-        if (line && ktp7.length > 5 && book7.length > 5) {
-            scores.lz11 = 3.0;
-            document.getElementById('badgeLZ11').className = "status-badge badge-done";
-            document.getElementById('badgeLZ11').innerText = "Заповнено (3.0 б)";
+    function checkQuiz() {
+        updateAllScores(true);
+    }
+
+    function updateAllScores(showAlert = false) {
+        const testRes = calculateTestScore();
+        const scoreTest = testRes.score;
+
+        const badge = document.getElementById('badgeTest');
+        badge.className = testRes.count > 0 ? "status-badge badge-done" : "status-badge badge-pending";
+        badge.innerText = `Набрано: ${testRes.score.toFixed(1)} / 1.0 б (${testRes.count}/10)`;
+
+        if (showAlert) {
+            alert(`Результат тестування: ${testRes.count} з 10 правильних відповідей. Нараховано ${testRes.score.toFixed(1)} з 1.0 бала.`);
         }
 
-        // ЛЗ 12 & СР 19 перевірка
-        const t7 = document.getElementById('taskTopic7').value.trim();
-        const t8 = document.getElementById('taskTopic8').value.trim();
-        const t9 = document.getElementById('taskTopic9').value.trim();
-        if (t7.length > 2 && t8.length > 2 && t9.length > 2) {
-            scores.lz12 = 3.0;
-            document.getElementById('badgeLZ12').className = "status-badge badge-done";
-            document.getElementById('badgeLZ12').innerText = "Сконструйовано (3.0 б)";
-        }
+        let scorePass = 0;
+        if (document.getElementById('selectAuthorLine').value) scorePass += 0.6;
+        if (document.getElementById('ktpUrl7').value.length > 5 && document.getElementById('bookUrl7').value.length > 5) scorePass += 0.8;
+        if (document.getElementById('ktpUrl8').value.length > 5 && document.getElementById('bookUrl8').value.length > 5) scorePass += 0.8;
+        if (document.getElementById('ktpUrl9').value.length > 5 && document.getElementById('bookUrl9').value.length > 5) scorePass += 0.8;
 
-        const siteUrl = document.getElementById('sr19SiteUrl').value.trim();
-        if (siteUrl.length > 5) {
-            scores.sr19 = 1.0;
+        let scoreConcept = 0;
+        if (document.getElementById('thesis1').value.length > 5) scoreConcept += 0.1;
+        if (document.getElementById('thesis2').value.length > 5) scoreConcept += 0.1;
+        if (document.getElementById('thesis3').value.length > 5) scoreConcept += 0.1;
+        
+        let orientFilled = 0;
+        for (let c of ['7', '8', '9']) {
+            for (let i = 1; i <= 4; i++) {
+                if (document.getElementById(`orient${c}_${i}`).value.length > 3) orientFilled++;
+            }
         }
+        if (orientFilled >= 6) scoreConcept += 0.2;
+        else if (orientFilled >= 2) scoreConcept += 0.1;
 
-        const total = scores.lk9 + scores.lz11 + scores.lz12 + scores.sr19;
+        let scoreTasks = 0;
+        if (document.getElementById('taskTopic7').value.length > 2) scoreTasks += 0.5;
+        if (document.getElementById('taskTopic8').value.length > 2) scoreTasks += 0.5;
+        if (document.getElementById('taskTopic9').value.length > 2) scoreTasks += 0.5;
+        if (document.getElementById('rubricTopic').value.length > 2) scoreTasks += 0.5;
+        if (document.getElementById('interExercise').value.length > 5 || document.getElementById('unpluggedExercise').value.length > 5) scoreTasks += 0.5;
+
+        let scoreSite = 0;
+        if (document.getElementById('sr19SiteUrl').value.length > 5) scoreSite = 1.0;
+
+        const total = scoreTest + scorePass + scoreConcept + scoreTasks + scoreSite;
         document.getElementById('totalScorePill').innerText = `Бали: ${total.toFixed(1)} / 8.0`;
+        return total;
     }
 
     function generateReport() {
         const name = document.getElementById('studentName').value || "Здобувач вищої освіти";
+        const date = document.getElementById('submissionDate').value || "";
+        const totalScore = updateAllScores();
         const out = document.getElementById('reportOutput');
         out.style.display = "block";
+
         out.innerHTML = `
             <h2 style="color:var(--primary-color); border-bottom:2px solid var(--secondary-color); padding-bottom:5px;">
-                Підсумковий атестаційний звіт з методичного модуля (7–9 класи)
+                Підсумковий методичний звіт (Інформатика 7–9 класи НУШ)
             </h2>
-            <p><b>Здобувач вищої освіти:</b> ${name}</p>
-            <p><b>Загальний підсумковий бал:</b> <span style="font-size:1.2rem; font-weight:bold; color:var(--success-color);">${(scores.lk9 + scores.lz11 + scores.lz12 + scores.sr19).toFixed(1)} / 8.0 балів</span></p>
+            <p><b>Виконавець (студент):</b> ${name} | <b>Дата:</b> ${date}</p>
+            <p><b>Загальний підсумковий бал:</b> <span style="font-size:1.25rem; font-weight:bold; color:var(--success-color);">${totalScore.toFixed(1)} / 8.0 балів</span></p>
             <hr>
             <h3>1. Навчально-методичне забезпечення (ЛЗ 11)</h3>
-            <p><b>Авторська лінійка:</b> ${document.getElementById('selectAuthorLine').value || 'Не вказано'}</p>
-            <p><b>Програма МОН:</b> ${document.getElementById('urlProgram').value || 'Не вказано'}</p>
-            <hr>
-            <h3>2. Банк розроблених компетентнісних завдань (ЛЗ 12)</h3>
+            <p><b>Обраний авторський колектив:</b> ${document.getElementById('selectAuthorLine').value || 'Не обрано'}</p>
             <ul>
-                <li><b>7 клас:</b> ${document.getElementById('taskTopic7').value} — ${document.getElementById('taskProduct7').value}</li>
-                <li><b>8 клас:</b> ${document.getElementById('taskTopic8').value} — ${document.getElementById('taskProduct8').value}</li>
-                <li><b>9 клас:</b> ${document.getElementById('taskTopic9').value} — ${document.getElementById('taskProduct9').value}</li>
+                <li><b>7 клас:</b> КТП: ${document.getElementById('ktpUrl7').value || '-'} | Автор КТП: ${document.getElementById('ktpAuthor7').value || '-'}</li>
+                <li><b>8 клас:</b> КТП: ${document.getElementById('ktpUrl8').value || '-'} | Автор КТП: ${document.getElementById('ktpAuthor8').value || '-'}</li>
+                <li><b>9 клас:</b> КТП: ${document.getElementById('ktpUrl9').value || '-'} | Автор КТП: ${document.getElementById('ktpAuthor9').value || '-'}</li>
             </ul>
             <hr>
-            <h3>3. Критеріальна рубрика оцінювання за 4-ма ГР (Наказ МОН № 1093)</h3>
-            <p><i>Сформовано уніфіковану матрицю критеріїв за 4 рівнями навчальних досягнень здобувачів освіти.</i></p>
+            <h3>2. Опрацювання нормативно-концептуальних засад НУШ (ЛК 9)</h3>
+            <p><b>Теза 1:</b> ${document.getElementById('thesis1').value || '-'}</p>
+            <p><b>Теза 2:</b> ${document.getElementById('thesis2').value || '-'}</p>
+            <p><b>Теза 3:</b> ${document.getElementById('thesis3').value || '-'}</p>
+            <h4>Матриця Я-орієнтирів:</h4>
+            <ul>
+                <li><b>7 клас:</b> ІФО 1: ${document.getElementById('orient7_1').value} (${document.getElementById('tool7_1').value}) | ІФО 2: ${document.getElementById('orient7_2').value} (${document.getElementById('tool7_2').value})</li>
+                <li><b>8 клас:</b> ІФО 1: ${document.getElementById('orient8_1').value} (${document.getElementById('tool8_1').value}) | ІФО 2: ${document.getElementById('orient8_2').value} (${document.getElementById('tool8_2').value})</li>
+                <li><b>9 клас:</b> ІФО 1: ${document.getElementById('orient9_1').value} (${document.getElementById('tool9_1').value}) | ІФО 2: ${document.getElementById('orient9_2').value} (${document.getElementById('tool9_2').value})</li>
+            </ul>
             <hr>
-            <h3>4. Публікація на Сайті вчителя (СР 19)</h3>
-            <p><b>URL-посилання:</b> <a href="${document.getElementById('sr19SiteUrl').value}" target="_blank">${document.getElementById('sr19SiteUrl').value || 'Не вказано'}</a></p>
+            <h3>3. Розробка компетентнісних завдань & Рубрика (ЛЗ 12)</h3>
+            <p><b>Банк завдань:</b> 7 кл: ${document.getElementById('taskTopic7').value} ➔ 8 кл: ${document.getElementById('taskTopic8').value} ➔ 9 кл: ${document.getElementById('taskTopic9').value}</p>
+            <p><b>Рубрика оцінювання за 4 ГР для уроку:</b> ${document.getElementById('rubricClass').value} — ${document.getElementById('rubricTopic').value}</p>
+            <hr>
+            <h3>4. Міжпредметні зв'язки & Публікація (СР 19)</h3>
+            <p><b>Урок:</b> ${document.getElementById('methodClassLesson').value} (${document.getElementById('methodTopic').value})</p>
+            <p><b>Інтерактивна вправа:</b> ${document.getElementById('interExercise').value || '-'}</p>
+            <p><b>Unplugged вправа:</b> ${document.getElementById('unpluggedExercise').value || '-'}</p>
+            <p><b>Персональний Сайт вчителя:</b> <a href="${document.getElementById('sr19SiteUrl').value}" target="_blank">${document.getElementById('sr19SiteUrl').value || 'Не вказано'}</a></p>
         `;
     }
 
     function exportDataJSON() {
+        const totalScore = updateAllScores();
         const data = {
             student: document.getElementById('studentName').value,
-            scores: scores,
-            lk9: {
-                theses: document.getElementById('lk9Theses').value,
-                comp: document.getElementById('lk9Comp').value,
-                orient: document.getElementById('lk9Orient').value
-            },
-            lz11: {
-                line: document.getElementById('selectAuthorLine').value,
-                programUrl: document.getElementById('urlProgram').value,
+            date: document.getElementById('submissionDate').value,
+            totalScore: totalScore.toFixed(1),
+            step2_passport: {
+                authorLine: document.getElementById('selectAuthorLine').value,
                 ktp7: document.getElementById('ktpUrl7').value,
-                book7: document.getElementById('bookUrl7').value
+                ktpAuthor7: document.getElementById('ktpAuthor7').value,
+                book7: document.getElementById('bookUrl7').value,
+                ktp8: document.getElementById('ktpUrl8').value,
+                ktpAuthor8: document.getElementById('ktpAuthor8').value,
+                book8: document.getElementById('bookUrl8').value,
+                ktp9: document.getElementById('ktpUrl9').value,
+                ktpAuthor9: document.getElementById('ktpAuthor9').value,
+                book9: document.getElementById('bookUrl9').value
             },
-            lz12_sr19: {
+            step3_concept: {
+                theses: [document.getElementById('thesis1').value, document.getElementById('thesis2').value, document.getElementById('thesis3').value],
+                orient7: { ifo1: document.getElementById('orient7_1').value, ifo2: document.getElementById('orient7_2').value, ifo3: document.getElementById('orient7_3').value, ifo4: document.getElementById('orient7_4').value },
+                orient8: { ifo1: document.getElementById('orient8_1').value, ifo2: document.getElementById('orient8_2').value, ifo3: document.getElementById('orient8_3').value, ifo4: document.getElementById('orient8_4').value },
+                orient9: { ifo1: document.getElementById('orient9_1').value, ifo2: document.getElementById('orient9_2').value, ifo3: document.getElementById('orient9_3').value, ifo4: document.getElementById('orient9_4').value }
+            },
+            step4_tasks_and_methods: {
                 task7: document.getElementById('taskTopic7').value,
                 task8: document.getElementById('taskTopic8').value,
                 task9: document.getElementById('taskTopic9').value,
-                rubricGR1: [document.getElementById('gr1_1').value, document.getElementById('gr1_4').value],
-                rubricGR2: [document.getElementById('gr2_1').value, document.getElementById('gr2_4').value],
-                rubricGR3: [document.getElementById('gr3_1').value, document.getElementById('gr3_4').value],
-                rubricGR4: [document.getElementById('gr4_1').value, document.getElementById('gr4_4').value],
+                rubricClass: document.getElementById('rubricClass').value,
+                rubricTopic: document.getElementById('rubricTopic').value,
+                methodClassLesson: document.getElementById('methodClassLesson').value,
+                methodTopic: document.getElementById('methodTopic').value,
+                interExercise: document.getElementById('interExercise').value,
+                unpluggedExercise: document.getElementById('unpluggedExercise').value,
                 siteUrl: document.getElementById('sr19SiteUrl').value
             }
         };
@@ -645,7 +947,7 @@
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `methodology_hub_7-9_${Date.now()}.json`;
+        a.download = `zvit_methodology_7-9_${Date.now()}.json`;
         a.click();
     }
 </script>
